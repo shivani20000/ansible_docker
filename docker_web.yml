@@ -1,0 +1,16 @@
+- hosts: docker
+  tasks:
+     - name: installing the httpd service
+       package:
+               name: "httpd"
+               state: present
+
+     - name: creating the html file
+       copy:
+               src: "/root/drweb.html"
+               dest: "/var/www/html/"
+
+     - name: starting httpd service
+       service:
+               name: httpd
+               state: started
